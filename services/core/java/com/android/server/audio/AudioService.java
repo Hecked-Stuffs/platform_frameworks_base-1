@@ -820,6 +820,9 @@ public class AudioService extends IAudioService.Stub
         readPersistedSettings();
         readUserRestrictions();
         mSettingsObserver = new SettingsObserver();
+
+        // Update volumes steps before creatingStreamStates!
+        initVolumeSteps();
         createStreamStates();
 
         // must be called after createStreamStates() as it uses MUSIC volume as default if no
